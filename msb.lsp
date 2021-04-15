@@ -58,8 +58,8 @@
 	)
 	
 	(setq a  '((15 10)(0 10)(0 -10)(15 -10)))
-	(command "_.pline" (foreach pt a (command pt)) "")
-	(setq fin1 (entlast))
+	;(command "_.pline" (foreach pt a (command pt)) "")
+	;(setq fin1 (entlast))
 	(command "_.rectangle" '(0 12) "_d" 10 24 '(10 0))
 	(setq rec1 (entlast))
 
@@ -102,14 +102,22 @@
 	(setq finaltube (entlast))
 	
 	
+	;; (command "_.move" finaltube "" (List 0 0) (List mputal 0) )
+	;; (command "_.move" finalTube rec1 fin1 "" '(0 0) pt1)
+	;; (command "_.rotate" finalTube rec1 fin1 "" pt1 pt2)
+	;; (command "_.copy" rec1 "" pt1 pt2 "")
+	;; (setq rec2 (entlast))
+	;; (command "_.copy" fin1 "" pt1 pt2 "")
+	;; (setq fin2 (entlast))
+	;; (command "_.rotate" rec2 fin2 "" pt2 180 )
+
+
 	(command "_.move" finaltube "" (List 0 0) (List mputal 0) )
-	(command "_.move" finalTube rec1 fin1 "" '(0 0) pt1)
-	(command "_.rotate" finalTube rec1 fin1 "" pt1 pt2)
+	(command "_.move" finalTube rec1 "" '(0 0) pt1)
+	(command "_.rotate" finalTube rec1 "" pt1 pt2)
 	(command "_.copy" rec1 "" pt1 pt2 "")
 	(setq rec2 (entlast))
-	(command "_.copy" fin1 "" pt1 pt2 "")
-	(setq fin2 (entlast))
-	(command "_.rotate" rec2 fin2 "" pt2 180 )
+	(command "_.rotate" rec2 "" pt2 180 )
 	;====(endcode)
 	(setvar 'osmode os)
 )
